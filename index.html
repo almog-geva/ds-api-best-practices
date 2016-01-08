@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="integrationDemoApp">
+
+    <head>
+        <title>DocuSign API Integration</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+
+    <body ng-controller="menuController">
+        <div class="navbar navbar-fixed-top navbar-custom">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="docusign.png"></a>
+            </div>
+            <p class="navbar-text">API Integrations</p>
+            <p class="navbar-text toggle-sidebar" ng-click="toggleSideBar()"><i class="fa fa-lg fa-angle-double-left" ng-class="{rotate: !showSideBar}"></i></p>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="sidebar" ng-class="{show: showSideBar}">
+                    <ul id="accordion1" class="nav nav-sidebar">
+                        <li ng-repeat="option in menu" ng-class="{active: activeTab == $index}" ng-click="setActiveTab($index, $event)" class="panel">
+                            <a href="#subMenu{{$index}}" ng-cloak data-toggle="collapse" data-parent="#accordion1">{{option.name}}</a>
+                            <ul id="subMenu{{$index}}" class="subMenu collapse">
+                                <li ng-repeat="subOption in option.subMenu" ng-class="{active: activeSubTab == $index, show: activeTab == $parent.$index}" ng-click="setActiveSubTab($index, $event)">
+                                    <a href="#" ng-cloak>{{subOption.name}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main" ng-class="{slide: showSideBar}">
+                    <iframe ng-src="{{currentUrl}}" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+        <script src="app.js"></script>
+        <script src="settings.js"></script>
+    </body>
+
+</html>
