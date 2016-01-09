@@ -16,6 +16,7 @@ angular.module('integrationDemoApp')
             {name:'Sender View', link:"#"},
             {name:'API password', link:"#"},
             {name:'SOBO', link:"#"}
-        ]
+        ],
+        currentUrl: ""
     });
 }());

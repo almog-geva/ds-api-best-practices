@@ -1,40 +1,46 @@
-(function() {
+(function () {
 angular.module('integrationDemoApp', [])
-  .controller('menuController', function($scope, $sce, appSettings, $timeout) {
+    .controller('mainController', function ($scope, appSettings, $sce) {
+        $scope.showSideBar = true;
+        $scope.currentUrl = "";
+        
+        $scope.$watch(
+            function () { 
+                return appSettings.currentUrl
+            },
+            function(value) {
+                $scope.currentUrl = $sce.trustAsResourceUrl(value);
+        });
+    
+        $scope.toggleSideBar = function () {
+            $scope.showSideBar = !$scope.showSideBar;
+        };
+    })
+  .controller('menuController', function ($scope, appSettings, $timeout) {
     $scope.activeTab = -1;
     $scope.activeSubTab = 0;
-    $scope.currentUrl = "";
-    $scope.showSideBar = true;
     
     $scope.menu = appSettings.menu;
     
-    $scope.setActiveTab = function(activeTabIndex, $event) {
+    $scope.setActiveTab = function (activeTabIndex) {
         $scope.activeTab = activeTabIndex;
         $scope.activeSubTab = 0;
         
         if (!!$scope.menu[activeTabIndex].subMenu) {
-            $timeout(function(){
-                $scope.currentUrl = $sce.trustAsResourceUrl($scope.menu[activeTabIndex].subMenu[0].link);
-            }, 600);
-            
-            //angular.element($event.currentTarget.querySelector('.subMenu')).css('height', $scope.options[activeTabIndex].subMenu.length * 36 + 'px');
-            //angular.element('.subMenu')[activeTabIndex].css('height', angular.element('.subMenu')[activeTabIndex].height());
-        }
-        else {
-            $timeout(function(){
-                $scope.currentUrl = $sce.trustAsResourceUrl($scope.menu[activeTabIndex].link);
-            }, 600);
+            $timeout(function () {
+                appSettings.currentUrl = $scope.menu[activeTabIndex].subMenu[0].link;
+            }, 300);
+        } else {
+            $timeout(function () {
+                appSettings.currentUrl = $scope.menu[activeTabIndex].link;
+            }, 300);
         }
     };
     
-    $scope.setActiveSubTab = function(activeSubTabIndex, event) {
+    $scope.setActiveSubTab = function (activeSubTabIndex, event) {
         $scope.activeSubTab = activeSubTabIndex;
-        $scope.currentUrl = $sce.trustAsResourceUrl($scope.menu[$scope.activeTab].subMenu[activeSubTabIndex].link);
+        appSettings.currentUrl = $scope.menu[$scope.activeTab].subMenu[activeSubTabIndex].link;
         event.stopPropagation();
     };
-    
-    $scope.toggleSideBar = function() {
-        $scope.showSideBar = !$scope.showSideBar;
-    }
   });
 }());

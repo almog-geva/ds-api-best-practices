@@ -93,9 +93,9 @@ body {
   position: relative;
   height: 0;
   overflow: hidden;
-  -webkit-transition: height .25s ease;
-       -o-transition: height .25s ease;
-          transition: height .25s ease;
+  -webkit-transition: height .2s ease;
+       -o-transition: height .2s ease;
+          transition: height .2s ease;
 }
 
 .subMenu>li>a {
