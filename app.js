@@ -1,20 +1,33 @@
 (function () {
 angular.module('integrationDemoApp', [])
-    .controller('mainController', function ($scope, appSettings, $sce) {
+    .controller('mainController', function ($scope, appSettings, $sce, $timeout) {
         $scope.showSideBar = true;
         $scope.currentUrl = "";
-        
+    
         $scope.$watch(
             function () { 
                 return appSettings.currentUrl
             },
             function(value) {
-                $scope.currentUrl = $sce.trustAsResourceUrl(value);
-        });
+                $scope.currentUrl = value;
+            }
+        );
     
         $scope.toggleSideBar = function () {
             $scope.showSideBar = !$scope.showSideBar;
         };
+        
+        $timeout(function () {
+            angular.element(document.body).removeClass("preload");
+        }, 0);
+    
+        $scope.isExternalLink = function () {
+            return $scope.currentUrl.search(/https?:\/\//i) > -1;
+        }
+        
+        $scope.getTrustedUrl = function () {
+            return $sce.trustAsResourceUrl($scope.currentUrl);
+        }
     })
   .controller('menuController', function ($scope, appSettings, $timeout) {
     $scope.activeTab = -1;

@@ -12,7 +12,7 @@ angular.module('integrationDemoApp')
                 {name:'Code Sample', link:"http://iodocs.docusign.com/APIWalkthrough/embeddedSending"}
             ]},
             {name:'Connect', link:"https://www.docusign.com/developer-center/explore/connect"},
-            {name:'API Base URL', link:"#"},
+            {name:'API Base URL', link:"loginInfo.html"},
             {name:'Sender View', link:"#"},
             {name:'API password', link:"#"},
             {name:'SOBO', link:"#"}

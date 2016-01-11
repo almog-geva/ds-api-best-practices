@@ -1,12 +1,19 @@
 html, body { height: 100%; }
 
 body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
     background-color: #eaeaea;
     padding-top: 54px;
+}
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
 }
 
 .navbar-nav > li > a {
@@ -68,7 +75,6 @@ body {
 
 .nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
     color: #333;
-    font-weight: bold;
     background-color: #eaeaea;
 }
 
@@ -115,6 +121,7 @@ body {
 .subMenu > .active > a, .subMenu > .active > a:hover, .subMenu > .active > a:focus {
     color: #333;
     background-color: #BFBFBF;
+    font-weight: 600;
 }
 
 .main {
@@ -128,6 +135,10 @@ body {
     -o-transition: margin-left 0.5s;
     -moz-transition: margin-left 0.5s;
     -webkit-transition: margin-left 0.5s;
+}
+
+.main > div, .main > div > div {
+    height: 100%;
 }
 
 .main.slide {
@@ -182,4 +193,18 @@ body {
     -webkit-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+}
+
+.loginInfoWrapper {
+    height: 100%;
+    background-color: #ccc;
+    padding-top: 30px;
+}
+
+.loginBox {
+    width: 500px;
+    height: 250px;
+    background-color: white;
+    margin: 0 auto;
+    padding: 20px;
 }
