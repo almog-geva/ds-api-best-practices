@@ -22,11 +22,11 @@ angular.module('integrationDemoApp', [])
         }, 0);
     
         $scope.isExternalLink = function () {
-            return $scope.currentUrl.search(/https?:\/\//i) > -1;
+            return $scope.currentUrl.search(/(?:^https?:\/\/|^external:)/i) > -1;
         }
         
         $scope.getTrustedUrl = function () {
-            return $sce.trustAsResourceUrl($scope.currentUrl);
+            return $sce.trustAsResourceUrl($scope.currentUrl.replace('external:',''));
         }
     })
   .controller('menuController', function ($scope, appSettings, $timeout) {
@@ -40,14 +40,16 @@ angular.module('integrationDemoApp', [])
         $scope.activeSubTab = 0;
         
         if (!!$scope.menu[activeTabIndex].subMenu) {
-            $timeout(function () {
-                appSettings.currentUrl = $scope.menu[activeTabIndex].subMenu[0].link;
-            }, 300);
+            setNewLinkWithDelay($scope.menu[activeTabIndex].subMenu[0].link);
         } else {
-            $timeout(function () {
-                appSettings.currentUrl = $scope.menu[activeTabIndex].link;
-            }, 300);
+            setNewLinkWithDelay($scope.menu[activeTabIndex].link);
         }
+    };
+    
+    function setNewLinkWithDelay(link) {
+        $timeout(function () {
+            appSettings.currentUrl = link;
+        }, 300);
     };
     
     $scope.setActiveSubTab = function (activeSubTabIndex, event) {

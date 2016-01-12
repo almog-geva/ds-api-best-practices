@@ -22,10 +22,10 @@
                 <div class="sidebar" ng-controller="menuController" ng-class="{show: showSideBar}">
                     <ul id="accordion1" class="nav nav-sidebar">
                         <li ng-repeat="option in menu" ng-class="{active: activeTab == $index}" ng-click="setActiveTab($index, $event)" class="panel">
-                            <a href="#subMenu{{$index}}" ng-cloak data-toggle="collapse" data-parent="#accordion1">{{option.name}}</a>
+                            <a href="#" ng-cloak data-toggle="collapse" data-target="#subMenu{{$index}}" data-parent="#accordion1">{{option.name}}</a>
                             <ul id="subMenu{{$index}}" class="subMenu collapse">
                                 <li ng-repeat="subOption in option.subMenu" ng-class="{active: activeSubTab == $index, show: activeTab == $parent.$index}" ng-click="setActiveSubTab($index, $event)">
-                                    <a href="#" ng-cloak>{{subOption.name}}</a>
+                                    <a href="" ng-cloak>{{subOption.name}}</a>
                                 </li>
                             </ul>
                         </li>

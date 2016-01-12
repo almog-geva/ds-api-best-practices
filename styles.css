@@ -76,6 +76,7 @@ body {
 .nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
     color: #333;
     background-color: #eaeaea;
+    font-weight: 600;
 }
 
 .subMenu {
@@ -197,14 +198,48 @@ body {
 
 .loginInfoWrapper {
     height: 100%;
-    background-color: #ccc;
+    background-color: #50535F;
     padding-top: 30px;
 }
 
 .loginBox {
-    width: 500px;
-    height: 250px;
-    background-color: white;
+    width: 700px;
+    height: 300px;
+    background-color: #fff;
     margin: 0 auto;
     padding: 20px;
+}
+
+.loginBox > .header {
+    font-size: 120%;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.loginBox label {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.loginBox > .env-select {
+    
+}
+
+.loginBox .login-btn {
+    float: right;
+    position: relative;
+    color: #fff;
+    background-color: #1C80BF;
+    text-decoration: none;
+    border: none;
+    width: 100px;
+}
+
+.env-select select {
+    float: left;
+    width: 50%;
+}
+
+.env-select label {
+    display: block;
 }
