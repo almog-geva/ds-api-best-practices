@@ -14,7 +14,7 @@ angular.module('integrationDemoApp')
             {name:'Connect', link:"https://www.docusign.com/developer-center/explore/connect"},
             {name:'API Base URL', link:"loginInfo.html"},
             {name:'Sender View', link:"external:CoSign v7_5 Administrator's Guide.pdf#page=10"},
-            {name:'API password', link:"#"},
+            {name:'API password', link:""},
             {name:'SOBO', link:"#"}
         ],
         currentUrl: ""

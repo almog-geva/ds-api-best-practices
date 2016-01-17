@@ -49,7 +49,7 @@ angular.module('integrationDemoApp', [])
     function setNewLinkWithDelay(link) {
         $timeout(function () {
             appSettings.currentUrl = link;
-        }, 300);
+        }, 200);
     };
     
     $scope.setActiveSubTab = function (activeSubTabIndex, event) {
